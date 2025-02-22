@@ -1,0 +1,590 @@
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  width: 100%; /* Changed from 1000% */
+}
+
+.admin-sidebar {
+  width: 280px;
+  background: #1a1a1a;
+  padding: 2rem;
+  color: white;
+}
+
+.admin-sidebar h1 {
+  color: #e23744;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  justify-content: center;
+}
+
+.nav-btn:hover, .nav-btn.active {
+  background: #e23744;
+}
+
+.admin-main {
+  flex: 1;
+  padding: 2rem;
+  background: #f5f5f5;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: calc(100vw - 280px); /* Account for sidebar width */
+}
+
+.admin-main h2 {
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.add-restaurant form {
+  max-width: 800px; /* Increased from 600px */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  align-items: flex-start;
+  width: 100%; /* Make form use full width */
+}
+
+.input-field {
+  position: relative;
+  width: 100%;
+}
+
+.input-field input, .input-field select {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 40px;
+  font-size: 1rem;
+  background: white;
+  transition: border-color 0.3s ease;
+  max-width: 100%; /* Ensure input fields use full width */
+}
+
+.input-field select {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 40px;
+  font-size: 1rem;
+  background: white;
+  transition: border-color 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+.input-field input:focus, .input-field select:focus {
+  border-color: #e23744;
+  outline: none;
+}
+
+.input-field select:focus {
+  outline: none;
+  border-color: #a82d2d;
+}
+
+.file-input {
+  position: relative;
+  width: 100%;
+}
+
+.file-input input[type="file"] {
+  display: none;
+}
+
+.file-input label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem;
+  background: white;
+  border: 1px dashed #ddd;
+  border-radius: 48px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  justify-content: center;
+}
+
+.file-input label:hover {
+  border-color: #e23744;
+  color: #e23744;
+}
+
+.image-preview {
+  margin-top: 1rem;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.submit-btn {
+  padding: 1rem;
+  background: #e23744;
+  color: white;
+  border: none;
+  align-items: center;
+  border-radius: 48px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.submit-btn:hover {
+  background: #c62d3a;
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.no-restaurants {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.restaurants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.restaurant-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  width: 100%; /* Remove fixed width percentage */
+  height: auto; /* Remove fixed height */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.restaurant-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.restaurant-info {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background: white;
+}
+
+.restaurant-info .left-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.restaurant-info h3 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+
+.restaurant-info .address {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.restaurant-info .right-content {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.restaurant-info .cuisine,
+.restaurant-info .category {
+  color: #4a4a4a;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Add media queries for responsiveness */
+@media (max-width: 1200px) {
+  .restaurants-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .restaurants-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .restaurants-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.users-table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 100%; /* Update table container to fill width */
+  margin: 2rem 0;
+}
+
+.users-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th, .users-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.users-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.users-table tr:hover {
+  background: #f5f5f5;
+}
+
+.logout-btn {
+  margin-top: auto;
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #ff6b81;
+}
+
+.delete-btn {
+  background: #ff4757;
+  color: white;
+  border: none;
+  width: fit-content;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: #ff6b81;
+  transform: translateY(-1px);
+}
+
+.menu-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.menu-modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.menu-modal-content h2 {
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.menu-modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.menu-modal-content input,
+.menu-modal-content textarea,
+.menu-modal-content select {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 40px;
+  font-size: 1rem;
+  background: white;
+  transition: all 0.3s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.menu-modal-content textarea {
+  border-radius: 20px;
+  min-height: 100px;
+  resize: vertical;
+}
+
+.menu-modal-content select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+.menu-modal-content input:focus,
+.menu-modal-content textarea:focus,
+.menu-modal-content select:focus {
+  outline: none;
+  border-color: #e23744;
+  box-shadow: 0 0 0 2px rgba(226, 55, 68, 0.1);
+}
+
+.menu-modal-content label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.menu-modal-content input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.menu-modal-content button[type="submit"] {
+  padding: 1rem;
+  background: #e23744;
+  color: white;
+  border: none;
+  border-radius: 48px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto 0;
+}
+
+.menu-modal-content button[type="submit"]:hover {
+  background: #c62d3a;
+  transform: translateY(-1px);
+}
+
+/* Close button for modal */
+.menu-modal-content .close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.menu-modal-content .close-btn:hover {
+  color: #e23744;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.modal-close-btn:hover {
+  background: #f5f5f5;
+  color: #e23744;
+}
+
+.manage-menu-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.manage-menu-btn:hover {
+  background: #45a049;
+}
+
+.menu-items-list {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.menu-item-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.menu-item-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.item-details {
+  padding: 1rem;
+}
+
+.item-details h4 {
+  margin: 0 0 0.5rem 0;
+  color: #1a1a1a;
+}
+
+.price {
+  color: #e23744;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.veg-badge {
+  background: #48c479;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+}
+
+.add-menu-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+}
